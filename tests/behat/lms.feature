@@ -1,5 +1,5 @@
 @local @local_sandbox
-Feature: Sandbox pugin.
+Feature: Sandbox plugin in the LMS.
 
   Background:
     Given I visit "/local/sandbox/index.php"
