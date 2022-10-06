@@ -13,3 +13,9 @@ Feature: Sandbox plugin in the App.
 
     When I press "Sandbox" in the app
     Then I should find "Sandbox Plugin" in the app
+
+  Scenario: It sets fields.
+    When I press the more menu button in the app
+    And I press "Sandbox" in the app
+    And I set the field "Answer" to "5" in the app
+    Then the field "Answer" matches value "5" in the app
