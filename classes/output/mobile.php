@@ -16,6 +16,7 @@ class mobile {
                     'html' => $OUTPUT->render_from_template('local_sandbox/index', []),
                 ],
             ],
+            'javascript' => file_get_contents(__DIR__ . '/../../js/mobile/index.js'),
         ];
     }
 
