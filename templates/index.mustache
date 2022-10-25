@@ -1,4 +1,35 @@
 <div style="padding: 0 1rem">
     <h1>Sandbox Plugin</h1>
-    <p>Modify this file to start tinkering</p>
+    <form name="sandbox">
+        <input type="hidden" value="foobar" name="hiddenfield" />
+
+        <ion-item>
+            <ion-label>Date and Time</ion-label>
+            <ion-datetime name="datetimefield" value="2022-01-01T11:06Z"></ion-datetime>
+        </ion-item>
+
+        <ion-item>
+            <ion-radio-group name="radiofield" [(ngModel)]="CONTENT_OTHERDATA.radiofield">
+                <ion-label>Radio</ion-label>
+                <ion-item>
+                    <ion-label>One</ion-label>
+                    <ion-radio slot="start" value="one"></ion-radio>
+                </ion-item>
+                <ion-item>
+                    <ion-label>Two</ion-label>
+                    <ion-radio slot="start" value="two"></ion-radio>
+                </ion-item>
+                <ion-item>
+                    <ion-label>Three</ion-label>
+                    <ion-radio slot="start" value="three"></ion-radio>
+                </ion-item>
+            </ion-radio-group>
+        </ion-item>
+
+        <ion-button class="ion-margin" expand="block" core-site-plugins-new-content form="sandbox" component="local_sandbox"
+            method="save_form" samePage="true" [args]="{radiofield: CONTENT_OTHERDATA.radiofield}"
+            [preSets]="{getFromCache: 0, saveToCache: 0}">
+            Save
+        </ion-button>
+    </form>
 </div>

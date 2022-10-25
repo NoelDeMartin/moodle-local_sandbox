@@ -16,6 +16,22 @@ class mobile {
                     'html' => $OUTPUT->render_from_template('local_sandbox/index', []),
                 ],
             ],
+            'otherdata' => ['radiofield' => 'two'],
+        ];
+    }
+
+    public static function save_form($args) {
+        return [
+            'templates' => [
+                [
+                    'id' => 'main',
+                    'html' => '<div style="padding: 0 1rem">' .
+                        "<p>Hidden: {$args['hiddenfield']}</p>" .
+                        "<p>Date: {$args['datetimefield']}</p>" .
+                        "<p>Radio: {$args['radiofield']}</p>" .
+                    '</div>',
+                ],
+            ],
         ];
     }
 
