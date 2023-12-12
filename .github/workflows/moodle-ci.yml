@@ -53,5 +53,8 @@ jobs:
       - name: Validating
         run: moodle-plugin-ci validate
 
+      - name: PHPUnit
+        run: moodle-plugin-ci phpunit
+
       - name: Behat features
         run: moodle-plugin-ci behat --profile chrome
