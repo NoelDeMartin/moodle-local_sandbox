@@ -31,7 +31,7 @@ jobs:
 
       - name: Initialise moodle-plugin-ci
         run: |
-          composer create-project -n --no-dev --prefer-dist moodlehq/moodle-plugin-ci ci ^3
+          composer create-project -n --no-dev --prefer-dist moodlehq/moodle-plugin-ci ci ^4
           echo $(cd ci/bin; pwd) >> $GITHUB_PATH
           echo $(cd ci/vendor/bin; pwd) >> $GITHUB_PATH
           sudo locale-gen en_AU.UTF-8
@@ -43,6 +43,7 @@ jobs:
         env:
           DB: pgsql
           MOODLE_BRANCH: MOODLE_400_STABLE
+          MOODLE_APP: true
 
       - name: PHP Lint
         run: moodle-plugin-ci phplint
@@ -54,4 +55,4 @@ jobs:
         run: moodle-plugin-ci validate
 
       - name: Behat features
-        run: moodle-plugin-ci behat --profile chrome
+        run: moodle-plugin-ci behat
