@@ -8,7 +8,7 @@ jobs:
 
     services:
       postgres:
-        image: postgres:10
+        image: postgres:13
         env:
           POSTGRES_USER: 'postgres'
           POSTGRES_HOST_AUTH_METHOD: 'trust'
@@ -31,7 +31,8 @@ jobs:
 
       - name: Initialise moodle-plugin-ci
         run: |
-          composer create-project -n --no-dev --prefer-dist moodlehq/moodle-plugin-ci ci ^4
+          git clone https://github.com/NoelDeMartin/moodle-plugin-ci --branch app-ionic7 ci
+          composer install -d ./ci
           echo $(cd ci/bin; pwd) >> $GITHUB_PATH
           echo $(cd ci/vendor/bin; pwd) >> $GITHUB_PATH
           sudo locale-gen en_AU.UTF-8
@@ -42,8 +43,9 @@ jobs:
           moodle-plugin-ci install --plugin ./plugin --db-host=127.0.0.1
         env:
           DB: pgsql
-          MOODLE_BRANCH: MOODLE_400_STABLE
+          MOODLE_BRANCH: MOODLE_403_STABLE
           MOODLE_APP: true
+          MOODLE_APP_DOCKER_IMAGE: moodlehq/moodleapp:next-test
 
       - name: PHP Lint
         run: moodle-plugin-ci phplint
